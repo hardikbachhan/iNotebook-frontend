@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
 
 const Home = () => {
-  return <div>
-      <div className="container">
-          <h1>This is Home.</h1>
-      </div>
-  </div>;
+  return (
+    <div>
+      <h1>Add a Note</h1>
+      {/* add form to input note title and description */}
+      <h1>Your Notes</h1>
+    </div>
+  );
 };
 
 export default Home;
