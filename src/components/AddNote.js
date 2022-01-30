@@ -45,6 +45,18 @@ const AddNote = () => {
                         onChange={handleChange}
                     />
                 </div>
+                <div className="form-group">
+                    <label htmlFor="tag">Tag</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="tag"
+                        name="tag"
+                        value={note.tag}
+                        placeholder="Tag for note..."
+                        onChange={handleChange}
+                    />
+                </div>
                 <button type="submit" className="btn btn-outline-dark" onClick={handleClick}>
                     Add Note
                 </button>
