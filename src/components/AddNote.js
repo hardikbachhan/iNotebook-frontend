@@ -10,7 +10,7 @@ const AddNote = () => {
     const handleClick = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
-        setNote({title: "", description: "", tag: "default"})
+        setNote({title: "", description: "", tag: "default"});
     };
 
     const handleChange = (e) => {
@@ -28,7 +28,7 @@ const AddNote = () => {
                         className="form-control"
                         id="title"
                         name="title"
-                        aria-describedby="emailHelp"
+                        value={note.title}
                         placeholder="Note Title goes here..."
                         onChange={handleChange}
                     />
@@ -40,12 +40,13 @@ const AddNote = () => {
                         className="form-control"
                         id="description"
                         name="description"
+                        value={note.description}
                         placeholder="Note Description goes here..."
                         onChange={handleChange}
                     />
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={handleClick}>
-                    Submit
+                    Add Note
                 </button>
             </form>
         </div>
