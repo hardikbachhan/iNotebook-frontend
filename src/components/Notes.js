@@ -5,28 +5,32 @@ import Noteitem from "./Noteitem";
 
 const Notes = () => {
     const context = useContext(noteContext);
-    const { notes, getNotes } = context;
+    const { notes, getNotes, editNote } = context;
 
     useEffect(() => {
         getNotes();
     });
 
     const ref = useRef(null);
-    const [note, setNote] = useState({ etitle: "", edescription: "", etag: "" });
+    const refClose = useRef(null);
+    const [note, setNote] = useState({ id: "", etitle: "", edescription: "", etag: "" });
 
     const updateNote = (currentNote) => {
         // shows a bootstrap modal
         // console.log("request to update note");
         ref.current.click();
-        setNote({ etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
     };
 
     const handleClick = (e) => {
-        e.preventDefault();
+        // e.preventDefault();  // button is not in form
         // update note after getting data from modal
         // addNote(note.title, note.description, note.tag);
         // setNote({title: "", description: "", tag: "default"});
-        console.log("updating the note...", note);
+        // making API call to edit note.
+        editNote(note.id, note.etitle, note.edescription, note.etag)
+        refClose.current.click();
+        // console.log("updating the note...", note);
     };
 
     const handleChange = (e) => {
@@ -109,6 +113,7 @@ const Notes = () => {
                         </div>
                         <div className="modal-footer">
                             <button
+                                ref={refClose}
                                 type="button"
                                 className="btn btn-secondary"
                                 data-bs-dismiss="modal"

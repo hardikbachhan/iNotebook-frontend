@@ -32,8 +32,9 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({title, description, tag}),
         });
-        // eslint-disable-next-line
-        const json = response.json();
+
+        const json = await response.json();
+        console.log(json);
         // TODO: below id and user are not correct. 
         const note = {
             _id: "61e936486e71ef70fef1a3d12",
@@ -59,8 +60,9 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({title, description, tag}),
         });
-        // eslint-disable-next-line
-        const json = response.json();
+
+        const json = await response.json();
+        // console.log(json);
 
         // Logic to edit in Client
         const newNotes = notes.map((note) => {
@@ -84,7 +86,7 @@ const NoteState = (props) => {
                 "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODI5NjYxMGUxNzQ1ZTVhZDJkMDBhIn0sImlhdCI6MTY0MjYxMzY5NH0.E2po2XW5Vb0tdMSEDFMcARgZAMJAEFW_6G9Rkl2tfeM"
             }
         });
-        const json = response.json();
+        const json = await response.json();
         console.log(json);
         
         // console.log("Deleting the note with id: " + id);
