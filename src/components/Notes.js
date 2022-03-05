@@ -81,8 +81,9 @@ const Notes = () => {
                                         id="etitle"
                                         name="etitle"
                                         value={note.etitle}
-                                        placeholder="Note Title goes here..."
                                         onChange={handleChange}
+                                        minLength={5}
+                                        required
                                     />
                                 </div>
                                 <div className="form-group">
@@ -93,8 +94,9 @@ const Notes = () => {
                                         id="edescription"
                                         name="edescription"
                                         value={note.edescription}
-                                        placeholder="Note Description goes here..."
                                         onChange={handleChange}
+                                        minLength={5}
+                                        required
                                     />
                                 </div>
                                 <div className="form-group">
@@ -105,7 +107,6 @@ const Notes = () => {
                                         id="etag"
                                         name="etag"
                                         value={note.etag}
-                                        placeholder="Tag for note..."
                                         onChange={handleChange}
                                     />
                                 </div>
@@ -120,7 +121,7 @@ const Notes = () => {
                             >
                                 Close
                             </button>
-                            <button type="button" className="btn btn-primary" onClick={handleClick}>
+                            <button disabled={note.etitle.length < 5 || note.edescription.length < 5} type="button" className="btn btn-primary" onClick={handleClick}>
                                 Update Note
                             </button>
                         </div>
@@ -130,6 +131,9 @@ const Notes = () => {
 
             <div className="row my-3">
                 <h2>Your Notes</h2>
+                <div className="container mx-3">
+                    {notes.length === 0 && <p>No Notes to display.</p>}
+                </div>
                 {notes.map((note) => {
                     return (
                         <Noteitem key={note._id} note={note} updateNote={updateNote} />

@@ -33,18 +33,20 @@ const NoteState = (props) => {
             body: JSON.stringify({title, description, tag}),
         });
 
-        const json = await response.json();
-        console.log(json);
-        // TODO: below id and user are not correct. 
-        const note = {
-            _id: "61e936486e71ef70fef1a3d12",
-            user: "61e8296610e1745e5ad2d00a",
-            title: title,
-            description: description,
-            tag: tag,
-            date: "2022-01-20T10:15:36.484Z",
-            __v: 0,
-        };
+        const note = await response.json();
+        // console.log(json);
+
+        // TODO: below id and user are not correct. - CORRECTED
+        // const note = json;
+        // {
+        //     _id: "61e936486e71ef70fef1a3d12",
+        //     user: "61e8296610e1745e5ad2d00a",
+        //     title: title,
+        //     description: description,
+        //     tag: tag,
+        //     date: "2022-01-20T10:15:36.484Z",
+        //     __v: 0,
+        // };
         // console.log("note added");
         setNotes(notes.concat(note)); // concat returns the array, push updates the array
     };
@@ -87,7 +89,7 @@ const NoteState = (props) => {
             }
         });
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         
         // console.log("Deleting the note with id: " + id);
         const newNotes = notes.filter((note) => id !== note._id);
