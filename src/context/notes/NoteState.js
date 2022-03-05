@@ -32,6 +32,7 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({title, description, tag}),
         });
+        // eslint-disable-next-line
         const json = response.json();
         // TODO: below id and user are not correct. 
         const note = {
@@ -58,6 +59,7 @@ const NoteState = (props) => {
             },
             body: JSON.stringify({title, description, tag}),
         });
+        // eslint-disable-next-line
         const json = response.json();
 
         // Logic to edit in Client
