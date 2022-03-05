@@ -1,4 +1,4 @@
-import "./App.css";
+import { useState } from "react";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -12,32 +12,43 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 function App() {
-  return (
-    <>
-      <NoteState>
-        <BrowserRouter>
-          <Navbar />
-          <Alert message="This is amazing React course." />
-          <div className="container">
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/about">
-                <About />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </NoteState>
-    </>
-  );
+    const [alert, setAlert] = useState(null);
+    const showAlert = (message, type) => {
+        setAlert({
+            msg: message,
+            type: type
+        })
+        setTimeout(() => {
+            setAlert(null);
+        }, 1500);
+    }
+
+    return (
+        <>
+            <NoteState>
+                <BrowserRouter>
+                    <Navbar />
+                    <Alert alert={alert} />
+                    <div className="container">
+                        <Switch>
+                            <Route exact path="/">
+                                <Home showAlert={showAlert} />
+                            </Route>
+                            <Route exact path="/about">
+                                <About />
+                            </Route>
+                            <Route exact path="/login">
+                                <Login showAlert={showAlert} />
+                            </Route>
+                            <Route exact path="/signup">
+                                <Signup showAlert={showAlert} />
+                            </Route>
+                        </Switch>
+                    </div>
+                </BrowserRouter>
+            </NoteState>
+        </>
+    );
 }
 
 export default App;

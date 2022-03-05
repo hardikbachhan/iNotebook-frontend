@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""});
     let history = useHistory();
 
@@ -26,8 +26,9 @@ const Login = () => {
             // save the auth token and redirect
             localStorage.setItem("token", json.authToken);
             history.push("/");
+            props.showAlert("Logged in successfully.", "success");
         }else{
-            alert(json.error);
+            props.showAlert(json.error, "danger");
         }
     }
 
@@ -46,6 +47,7 @@ const Login = () => {
                         aria-describedby="emailHelp"
                         value={credentials.email}
                         onChange={handleChange}
+                        required
                     />
                     <div id="emailHelp" className="form-text">
                         We'll never share your email with anyone else.
@@ -62,6 +64,8 @@ const Login = () => {
                         name="password"
                         value={credentials.password}
                         onChange={handleChange}
+                        required
+                        minLength={5}
                     />
                 </div>
                 <button type="submit" className="btn btn-dark">

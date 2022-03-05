@@ -3,7 +3,7 @@ import noteContext from "../context/notes/noteContext";
 import AddNote from "./AddNote";
 import Noteitem from "./Noteitem";
 
-const Notes = () => {
+const Notes = (props) => {
     const context = useContext(noteContext);
     const { notes, getNotes, editNote } = context;
 
@@ -19,7 +19,7 @@ const Notes = () => {
         // shows a bootstrap modal
         // console.log("request to update note");
         ref.current.click();
-        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag })
+        setNote({ id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag });
     };
 
     const handleClick = (e) => {
@@ -30,6 +30,7 @@ const Notes = () => {
         // making API call to edit note.
         editNote(note.id, note.etitle, note.edescription, note.etag)
         refClose.current.click();
+        props.showAlert("Updated successfully", "success");
         // console.log("updating the note...", note);
     };
 
@@ -39,7 +40,7 @@ const Notes = () => {
 
     return (
         <>
-            <AddNote />
+            <AddNote showAlert={props.showAlert} />
 
             <button
                 type="button"
@@ -136,7 +137,7 @@ const Notes = () => {
                 </div>
                 {notes.map((note) => {
                     return (
-                        <Noteitem key={note._id} note={note} updateNote={updateNote} />
+                        <Noteitem key={note._id} note={note} updateNote={updateNote} showAlert={props.showAlert} />
                     );
                 })}
             </div>
