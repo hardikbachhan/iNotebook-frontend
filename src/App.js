@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -10,6 +11,7 @@ import NoteState from "./context/notes/NoteState";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 
 function App() {
     const [alert, setAlert] = useState(null);
@@ -45,6 +47,7 @@ function App() {
                             </Route>
                         </Switch>
                     </div>
+                    <Footer/>
                 </BrowserRouter>
             </NoteState>
         </>

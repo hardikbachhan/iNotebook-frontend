@@ -14,7 +14,7 @@ const NoteState = (props) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODI5NjYxMGUxNzQ1ZTVhZDJkMDBhIn0sImlhdCI6MTY0MjYxMzY5NH0.E2po2XW5Vb0tdMSEDFMcARgZAMJAEFW_6G9Rkl2tfeM"
+                "auth-token": localStorage.getItem("token")
             }
         });
         const notes = await response.json();
@@ -28,7 +28,7 @@ const NoteState = (props) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODI5NjYxMGUxNzQ1ZTVhZDJkMDBhIn0sImlhdCI6MTY0MjYxMzY5NH0.E2po2XW5Vb0tdMSEDFMcARgZAMJAEFW_6G9Rkl2tfeM"
+                "auth-token": localStorage.getItem("token")
             },
             body: JSON.stringify({title, description, tag}),
         });
@@ -58,13 +58,13 @@ const NoteState = (props) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODI5NjYxMGUxNzQ1ZTVhZDJkMDBhIn0sImlhdCI6MTY0MjYxMzY5NH0.E2po2XW5Vb0tdMSEDFMcARgZAMJAEFW_6G9Rkl2tfeM"
+                "auth-token": localStorage.getItem("token")
             },
             body: JSON.stringify({title, description, tag}),
         });
 
         const json = await response.json();
-        // console.log(json);
+        console.log(json);
 
         // Logic to edit in Client
         const newNotes = notes.map((note) => {
@@ -85,11 +85,11 @@ const NoteState = (props) => {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjFlODI5NjYxMGUxNzQ1ZTVhZDJkMDBhIn0sImlhdCI6MTY0MjYxMzY5NH0.E2po2XW5Vb0tdMSEDFMcARgZAMJAEFW_6G9Rkl2tfeM"
+                "auth-token": localStorage.getItem("token")
             }
         });
         const json = await response.json();
-        // console.log(json);
+        console.log(json);
         
         // console.log("Deleting the note with id: " + id);
         const newNotes = notes.filter((note) => id !== note._id);
