@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Typed from 'react-typed';
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -35,18 +36,25 @@ const Login = (props) => {
     const style = {
         "background": "url('https://images.ctfassets.net/lzny33ho1g45/66zDmwVz2N4aN4k589RRjB/36f5339cd45ed61b6560292a696e91d5/notes?w=1400') no-repeat center center",
         "padding": "0",
-        "height": "auto",
-        "width": "60%"
+        "height": "450px",
+        "width": "750px"
     }
 
     return (
         <div className="container">
-
-            <h2 className="mb-4">Login to continue to iNotebook</h2>
+            <div className="mb-3" style={{fontSize: "3rem"}}>
+                <Typed
+                    strings={['Login to continue to iNotebook...', 'This is a simple Note taking App...']}
+                    typeSpeed={40}
+                    smartBackspace="true"
+                    backSpeed={40}
+                    loop               
+                />
+            </div>
             <div className="row">
-                <div className="col-sm-12 col-md-8" style={style}>
+                <div className="col-lg-8" style={style}>
                 </div>
-                <div className="col-sm-12 col-md-4" style={{ "padding": "80px 0 50px 30px" }}>
+                <div className="col-lg-4" style={{ "padding": "80px 0 50px 30px" }}>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">
