@@ -2,7 +2,7 @@
 
 - Description: Note taking app on the Cloud.
 
-- Link: http://i-notebook-app-hb.herokuapp.com/
+- Link: https://i-notebook-cv3r.onrender.com
 
 - Admin Email: admin@admin.com, Admin Password: admin123
 
